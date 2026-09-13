@@ -15,7 +15,7 @@ router.post('/', async(req, res) => {
         This transport translates between those two worlds. 
         */
         const transport = new NodeStreamableHTTPServerTransport({
-            sessionIdGenerator: undefined // we are doing stateless , when the mcp server will need memory, will we make this `sessionIdGenerator: () => randomUUID()`
+            sessionIdGenerator: undefined // we are doing stateless, when the mcp server will need memory, will we make this `sessionIdGenerator: () => randomUUID()`
         });
 
         // connects the mcp server to the transport http streamable layer
