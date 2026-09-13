@@ -1,0 +1,2 @@
+### Technical Depth
+Tinkering with technical dev-docs, this repo has simple implementations that I do to understand how tech works in addition with the debunking the concept that I chronical at https://cerebum.super.site 
