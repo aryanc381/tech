@@ -1,4 +1,4 @@
-// this is my server that has 
+// this is my server that has one tool called "greet"
 import { McpServer } from "@modelcontextprotocol/server";
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
 import * as z from "zod/v4";
@@ -28,6 +28,30 @@ function createServer() {
             }
         }
     );
+
+    server.registerTool( // i made this on my own haha
+        "add_numbers", 
+        {
+            description: "Adding two numbers",
+            inputSchema: z.object({
+                a: z.number().describe("Input the first value"),
+                b: z.number().describe("Input the second value")
+            })
+        },
+
+        async ({ a, b }) => {
+            const sum = a + b;
+            return {
+                content: [
+                    {
+                        type: "text",
+                        text: `The sum of two numbers is ${sum}`,
+                    },
+                ],
+            }
+        }
+    )
+
     return server;
 }
 

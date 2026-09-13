@@ -23,16 +23,30 @@ for (const tool of tools) {
 }
 
 // calling the greet tool we made on the server
-const result = await client.callTool({
+const greeting = await client.callTool({
     name: "greet",
     arguments: {
         name: "Aryan"
     }
 });
 
+const firstNum = 11
+const secondNum = 200
+const sum = await client.callTool({
+    name: "add_numbers",
+    arguments: {
+        a: firstNum,
+        b: secondNum
+    }
+});
+
 // the server returns an array of content because MCP tools usually return multiple piences of content
-for (const block of result.content) {
-    if("text" in block) { console.log(`Server says ${block.text}`); }
+for (const block of greeting.content) {
+    if("text" in block) { console.log(`\nThe greeting tool call says ${block.text}`); }
+}
+
+for(const block of sum.content) {
+    if("text" in block) { console.log(`The sum of ${firstNum} and ${secondNum} is ${block.text} `); }
 }
 
 await client.close();
